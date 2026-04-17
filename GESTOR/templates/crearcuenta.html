@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}Registro{% endblock %}
+
+{% block content %}
+<div class="container d-flex flex-column align-items-center justify-content-center min-vh-100">
+    <h3>⊹₊˚‧︵‿₊୨ᰔ୧₊‿︵‧˚₊⊹</h3>
+
+    <div class="card bg-danger bg-opacity-25 border-0 w-75 p-4 shadow-none">
+        <div class="card-body">
+
+            <h5 class="card-title text-black fw-bold text-center mb-4">
+                CREAR UNA CUENTA ES EL PRIMER PASO PARA GESTIONAR TU VIDA
+            </h5>
+            <form class="row g-3">
+                <div class="col-md-4">
+                    <label for="validationServer01" class="form-label">First name</label>
+                    <input type="text" class="form-control is-valid" id="validationServer01" value="Mark" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="validationServer02" class="form-label">Last name</label>
+                    <input type="text" class="form-control is-valid" id="validationServer02" value="Otto" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="validationServerUsername" class="form-label">Username</label>
+                    <div class="input-group has-validation">
+                        <span class="input-group-text" id="inputGroupPrepend3">@</span>
+                        <input type="text" class="form-control is-invalid" id="validationServerUsername"
+                            aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" required>
+                        <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                            Please choose a username.
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label text-black fw-bold">Registra tu
+                            Email</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1"
+                            placeholder="name@example.com">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="inputPassword5" class="form-label text-black fw-bold">Tu contraseña</label>
+                        <input type="password" id="inputPassword5" class="form-control"
+                            aria-describedby="passwordHelpBlock">
+
+                        <div id="passwordHelpBlock" class="form-text text-black">
+                            Tu contraseña debe ser segura: agrega al menos 8 caracteres y varía entre signos, letras
+                            mayúsculas y minúsculas.
+                        </div>
+                    </div>
+                    <div">
+<a class="btn btn-danger" href="/tareas.html" role="button">continua</a>
+  </div>
+</form>
+                </div>
+        </div>
+    </div>
+    <p>POR AHORA TE LLEVA DIRECTAMENTE A TAREAS HASTA QUE REALICEMOS LAS FUNCIONES</p>
+    {% endblock %}

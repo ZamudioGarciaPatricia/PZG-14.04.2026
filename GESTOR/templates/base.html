@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Usando pymongo PZG{% endblock %}</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="row g-0 text-center">
+        <div class="col-sm-6 col-md-8"> 
+            <h4>⊹₊˚‧︵‿₊୨ᰔ୧₊‿︵‧˚₊⊹</h4>
+            <h1 class="display-3 text-center">⋆.ೃ࿔LULA GESTOR DE TAREAS⋆࿔*:･</h1>
+            <h4>⏾</h4>
+
+        </div>
+        <div class="col-6 col-md-4">
+            <img src="/static/img1.jpg" class="img-fluid" alt="logo"></div>
+    </div>
+
+    <main class="container my-5">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="py-3 bg-light border-top">
+        <div class="container text-center">
+            <span class="text-muted">© 2026 Usando pymongo PZG gestor de tareas =></span>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    {% block scripts %}{% endblock %}
+</body>
+
+</html>
