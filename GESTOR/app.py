@@ -1,4 +1,7 @@
 from flask import Flask, render_template
+import gestor
+
+gestor = gestor.GestorTareas()
 
 app = Flask(__name__)
 
