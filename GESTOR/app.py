@@ -4,16 +4,18 @@ import gestor
 gestor = gestor.GestorTareas()
 
 app = Flask(__name__)
+app.secret_key = 'gatitolula'
 
 @app.route('/')
 def home():
     return render_template('inicio.html')
 
-@app.route('/iniciasesion')
+@app.route('/iniciasesion', methods=['GET', 'POST'])
 def iniciasesion():
-    return render_template('iniciarsesion.html') 
+    return render_template('iniciarsesion.html')
 
-@app.route('/creacuenta')
+
+@app.route('/creacuenta', methods=['GET', 'POST'])
 def creacuenta():
     return render_template('crearcuenta.html')
 
