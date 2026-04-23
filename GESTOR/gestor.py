@@ -1,5 +1,5 @@
 """
-Aplicación de ejemplo: Gestor de tareas con MongoDB y Python
+Aplicación de ejemplo: Gestor de tareas con MongoDB y Python usando las funcionalidades que nos enseño el profe
 """
 
 from pymongo import MongoClient
@@ -28,7 +28,7 @@ class GestorTareas:
     def _crear_indices(self):
         """Crear índices para mejorar rendimiento"""
         self.usuarios.create_index("email", unique=True)
-        self.tareas.create_index([("usuario_id", 1), ("fecha_creacion", -1)])
+        self.tareas.create_index([("user", 1), ("fecha_creacion", -1)])
         self.tareas.create_index("estado")
     
     def crear_usuario(self, nombre: str, email: str) -> Optional[str]:
@@ -37,14 +37,16 @@ class GestorTareas:
             resultado = self.usuarios.insert_one({
                 "nombre": nombre,
                 "email": email,
+                "username": user,
                 "fecha_registro": datetime.now(),
-                "activo": True
+                "activo": True,
+                
             })
             return str(resultado.inserted_id)
         except DuplicateKeyError:
             print(f"❌ Error: El email {email} ya está registrado")
             return None
-    
+    # ESTO AUN NO FUNCIONA PROX 
     def obtener_usuario(self, usuario_id: str) -> Optional[Dict]:
         """Obtener usuario por ID"""
         try:
