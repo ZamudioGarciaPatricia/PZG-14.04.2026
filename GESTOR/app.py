@@ -13,15 +13,7 @@ def home():
 
 @app.route('/iniciasesion', methods=['GET', 'POST'])
 def iniciasesion():
-    if request.method == 'POST':
-        usuario = request.form.get('usuario')
-        contraseña = request.form.get('contraseña')
         
-        if gestor_obj.validar_usuario(usuario, contraseña):
-            return redirect(url_for('tareas'))
-        else:
-            flash('Usuario o contraseña incorrectos')
-            
     return render_template('iniciarsesion.html')
 
 @app.route('/creacuenta', methods=['GET', 'POST'])
