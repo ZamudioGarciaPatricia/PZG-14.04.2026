@@ -1,10 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 import gestor
-
 from passlib.hash import pbkdf2_sha256
 
 app = Flask(__name__)
 app.secret_key = 'gatitolula'
+
 gestor_obj = gestor.GestorTareas("mongodb://127.0.0.1:27017/")
 
 @app.route('/')
@@ -19,11 +19,13 @@ def creacuenta():
         s = request.form.get('secreto')
         
         password_encriptada = pbkdf2_sha256.hash(s)
-        
+
         if gestor_obj.crear_usuario(u, e, password_encriptada):
-            flash('¡Cuenta creada! Ahora inicia sesión.')
+            flash('¡Cuenta creada con éxito! Ahora puedes iniciar sesión.')
             return redirect(url_for('iniciasesion'))
-        flash('El correo ya existe.')
+        else:
+            flash('El correo ya está registrado o hubo un error.')
+            
     return render_template('crearcuenta.html')
 
 @app.route('/iniciasesion', methods=['GET', 'POST'])
@@ -33,11 +35,12 @@ def iniciasesion():
         s = request.form.get('secreto') 
         
         user = gestor_obj.obtener_usuario_por_email(e)
-        
+
         if user and pbkdf2_sha256.verify(s, user['secreto']):
             return redirect(url_for('tareas'))
+        else:
+            flash('Correo o contraseña incorrectos.')
             
-        flash('Datos incorrectos.')
     return render_template('iniciarsesion.html')
 
 @app.route('/tareas')
