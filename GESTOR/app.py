@@ -24,7 +24,7 @@ def creacuenta():
             flash('¡Cuenta creada con éxito! Ahora puedes iniciar sesión.')
             return redirect(url_for('iniciasesion'))
         else:
-            flash('El correo ya está registrado o hubo un error.')
+            flash('Este correo ya esta registrado.')
             
     return render_template('crearcuenta.html')
 
@@ -39,7 +39,7 @@ def iniciasesion():
         if user and pbkdf2_sha256.verify(s, user['secreto']):
             return redirect(url_for('tareas'))
         else:
-            flash('Correo o contraseña incorrectos.')
+            flash('datos incorrectos.')
             
     return render_template('iniciarsesion.html')
 
