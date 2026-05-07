@@ -43,9 +43,24 @@ def iniciasesion():
             
     return render_template('iniciarsesion.html')
 
+
 @app.route('/tareas')
 def tareas():
-    return render_template('tareas.html')
+    lista_tareas = gestor_obj.obtener_tareas() 
+    return render_template('tareas.html', tareas=lista_tareas)
+
+@app.route('/agregar_tarea', methods=['POST'])
+def agregar_tarea():
+    contenido = request.form.get('tarea_nombre')
+    if contenido:
+        gestor_obj.insertar_tarea(contenido)
+    return redirect(url_for('tareas'))
+
+@app.route('/eliminar_tarea/<id>')
+def eliminar_tarea(id):
+    gestor_obj.borrar_tarea(id)
+    return redirect(url_for('tareas'))
+
 
 if __name__ == '__main__':
     app.run(debug=True)
