@@ -43,7 +43,7 @@ class GestorTareas:
         """Obtener tareas de un usuario, opcionalmente filtradas por estado"""
         filtro = {"usuario_id": ObjectId(usuario_id)}
         if estado:
-        filtro["estado"] = estado
+            filtro["estado"] = estado
         
         tareas = self.tareas.find(filtro).sort("fecha_creacion", -1)
         resultado = []
@@ -58,8 +58,8 @@ class GestorTareas:
     for t in tareas:
         t['_id'] = str(t['_id'])
     º           t['usuario_id'] = str(t['usuario_id'])
-        resultado.append(t)
-        return resultado
+    resultado.append(t)
+    return resultado
 
 
     def obtener_usuario_por_email(self, email):
